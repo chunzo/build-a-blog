@@ -48,6 +48,11 @@ class ViewPostHandler(webapp2.RequestHandler):
         post = BlogEntries.get_by_id(int(id))
         t = jinja_env.get_template('permalink.html')
         content = t.render(post = post)
+
+        if not post:
+            t = jinja_env.get_template('error.html')
+            content = t.render(post = id)
+
         self.response.write(content)
 
 class NewPost(webapp2.RequestHandler):
