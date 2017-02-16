@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>blog!</h1>
+{% for each in posts %}
+<a href='{{ each.key().id() }}'><h3>{{ each.title }}</h3></a>
+<br>
+{{ each.content }}
+<br>
+{% endfor %}
+
+{% endblock %}
