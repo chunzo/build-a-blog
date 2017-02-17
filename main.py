@@ -41,6 +41,11 @@ class BlogHome(webapp2.RequestHandler):
                             LIMIT 5')
         t = jinja_env.get_template('main.html')
         content = t.render(posts = posts)
+
+        if self.request.path == '/blog':
+            self.redirect('/blog/')
+            return
+
         self.response.write(content)
 
 class ViewPostHandler(webapp2.RequestHandler):
